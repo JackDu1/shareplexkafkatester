@@ -10,3 +10,4 @@ C:\SharePlexKafkaTester\SharePlexKafkaTester\bin\Debug\x64\librdkafka.dll
 C:\SharePlexKafkaTester\SharePlexKafkaTester\bin\Debug\x64\zlib.dll
 C:\SharePlexKafkaTester\SharePlexKafkaTester\bin\Debug\RdKafka.dll
 C:\SharePlexKafkaTester\SharePlexKafkaTester\bin\Debug\kafka-net.dll
+C:\SharePlexKafkaTester\SharePlexKafkaTester\obj\Debug\SharePlexKafkaTester.csprojResolveAssemblyReference.cache

@@ -23,9 +23,16 @@ namespace SharePlexKafkaTester
         //list all activated broker node
         public List<String> Brokernodes = new List<String>();
 
+        //Oracle connection
+        OracleConnection OracleConnection = null;
+        
+
+
         static void Main(string[] args)
         {
             var config = new Config(){ GroupId = "simple-csharp-consumer" };
+
+            
             
             //maxium reads mssages
             long maxReads = long.Parse("3");
@@ -93,6 +100,57 @@ namespace SharePlexKafkaTester
             }
 
 
+        }
+
+        public void ConnecttoOracleDatabase(string host, string sid, string uid, string pwd)
+        {
+            try
+            {
+
+                OracleConnection = new OracleConnection();
+                OracleConnection.ConnectionString = "User ID=" + uid + ";Password=" + pwd + ";Data Source=(DESCRIPTION = (ADDRESS_LIST= (ADDRESS = (PROTOCOL = TCP)(HOST = " + host + ")(PORT = 1521))) (CONNECT_DATA = (SERVICE_NAME = " + sid + ")))";
+                if (OracleConnection.State != System.Data.ConnectionState.Open)
+                {
+                    OracleConnection.OpenAsync();
+                }
+                Console.WriteLine(string.Format("connect to Database: {0}\\{1}, state: {2}", host,sid,OracleConnection.State.ToString()));
+            }
+            catch(OracleException ec)
+            {
+                Console.WriteLine(string.Format("Unable to connect to database server: {0}, Connection fatal error: {1}",ec.Message.ToString()));               
+            }
+        }
+
+        public void CloseConnection()
+        {
+            if (OracleConnection.State != System.Data.ConnectionState.Closed)
+            {
+                OracleConnection.Close();
+            }
+        }
+        public void getDataRecords(string sql)
+        {
+            OracleCommand comm = null;
+            OracleDataReader oraclereader = null;
+            try
+            {
+                comm = new OracleCommand(sql,OracleConnection);
+                oraclereader = comm.ExecuteReader();
+                while (oraclereader.Read())
+                {
+                    string id = oraclereader.GetValue(0).ToString();
+                }
+
+                oraclereader.Close();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(string.Format("Get fetal error when get data records: {0}", ex.Message.ToString()));
+            }
+            finally
+            {
+                oraclereader.Close();
+            }
         }
     }
 }
