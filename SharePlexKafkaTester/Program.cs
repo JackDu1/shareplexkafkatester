@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data.OracleClient;
+using Oracle.DataAccess.Client;
+using System.Data.SqlClient;
 using System.Collections;
 using System.Linq;
 using System.Text;
@@ -26,7 +27,6 @@ namespace SharePlexKafkaTester
         //Oracle connection
         OracleConnection OracleConnection = null;
         
-
 
         static void Main(string[] args)
         {
