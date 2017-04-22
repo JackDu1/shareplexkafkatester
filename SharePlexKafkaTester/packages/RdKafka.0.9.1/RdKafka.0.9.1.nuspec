@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
+  <metadata>
+    <id>RdKafka</id>
+    <version>0.9.1</version>
+    <title>RdKafka</title>
+    <authors>Andreas Heider</authors>
+    <owners>Andreas Heider</owners>
+    <projectUrl>https://github.com/ah-/rdkafka-dotnet</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>C# Apache Kafka client</description>
+    <summary>rdkafka-dotnet is a C# client for Apache Kafka based on librdkafka.</summary>
+    <tags>kafka rdkafka client csharp dotnet</tags>
+    <dependencies>
+      <group targetFramework=".NETFramework4.5.1">
+        <dependency id="RdKafka.Internal.librdkafka" version="0.9.1" />
+      </group>
+      <group targetFramework="Unsupported0.0">
+        <dependency id="System.Console" version="4.0.0" />
+        <dependency id="System.Linq" version="4.1.0" />
+        <dependency id="System.Runtime.InteropServices" version="4.1.0" />
+        <dependency id="RdKafka.Internal.librdkafka" version="0.9.1" />
+      </group>
+    </dependencies>
+  </metadata>
+</package>
